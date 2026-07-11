@@ -1,5 +1,5 @@
 """
-routes/watchlist.py — CineLog (feature/watchlist branch)
+routes/watchlist.py — CineLog
 
 Endpoints for the watchlist feature.
 """
@@ -29,7 +29,7 @@ def add_film(user_id):
     """
     POST /watchlist/<user_id>/add
 
-    Body: { "film_id": <int>, "public": true }  ("public" optional, defaults to True)
+    Body: { "film_id": "<uuid>", "public": true }  ("public" optional, defaults to True)
     """
     data = request.get_json()
     if not data or "film_id" not in data:
@@ -53,7 +53,7 @@ def remove_film(user_id):
     """
     DELETE /watchlist/<user_id>/remove
 
-    Body: { "film_id": <int> }
+    Body: { "film_id": "<uuid>" }
     """
     data = request.get_json()
     if not data or "film_id" not in data:

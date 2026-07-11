@@ -1,5 +1,5 @@
 """
-services/watchlist_service.py — CineLog (feature/watchlist branch)
+services/watchlist_service.py — CineLog
 
 Business logic for the watchlist feature.
 """
@@ -25,7 +25,7 @@ def add_to_watchlist(user_id, film_id, public=True):
 
     Args:
         user_id (str): UUID of the user.
-        film_id (int): ID of the film. (Note: integer — pre-refactor)
+        film_id (str): UUID of the film.
         public (bool, optional): Whether this entry is visible to other users.
             Defaults to True — see pr-response.md Comment 4 for the reasoning
             behind this default and why callers can override it explicitly.
@@ -61,7 +61,7 @@ def remove_from_watchlist(user_id, film_id):
 
     Args:
         user_id (str): UUID of the user.
-        film_id (int): ID of the film. (Note: integer — pre-refactor)
+        film_id (str): UUID of the film.
 
     Returns:
         bool: True if the entry was removed.
