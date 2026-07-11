@@ -68,6 +68,17 @@ def test_add_to_watchlist_creates_entry(app, sample_user, sample_film):
             user_id=sample_user, film_id=sample_film
         ).first()
         assert in_db is not None
+        assert in_db.public is True
+
+
+def test_add_to_watchlist_respects_explicit_public_false(app, sample_user, sample_film):
+    """
+    Callers should be able to override the public default explicitly.
+    """
+    with app.app_context():
+        entry = add_to_watchlist(user_id=sample_user, film_id=sample_film, public=False)
+
+        assert entry.public is False
 
 
 # ── Deduplication ────────────────────────────────────────────────────────────
