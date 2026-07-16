@@ -61,6 +61,10 @@ a86dbf6 fix: add deduplication check to prevent duplicate watchlist entries
 ```
 <!-- TODO before submitting: replace this text block with an actual screenshot image of `git log --oneline` per the assignment's Milestone 4 checkpoint (this doc was produced in a terminal-only environment that can't capture a real screenshot). -->
 
+## Screenshots of git log --oneline
+![alt text](image.png)
+
+
 ## Stretch Features
 
 **`remove_from_watchlist(user_id, film_id)`:** Added to `services/watchlist_service.py`, mirroring `remove_from_collection()` in `services/collection_service.py` exactly — same query-then-delete shape, and a new `NotOnWatchlistError` exception matching `NotInCollectionError`'s naming and role. Wired up a `DELETE /watchlist/<user_id>/remove` route mirroring `routes/collection.py`'s `remove_film`, catching `NotOnWatchlistError` → 404. Tests: `test_remove_from_watchlist_deletes_entry` (happy path) and `test_remove_from_watchlist_not_present_raises` (removing something not on the list raises rather than silently no-op'ing).
